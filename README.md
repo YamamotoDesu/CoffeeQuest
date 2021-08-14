@@ -8,7 +8,7 @@ https://www.yelp.com/developers/v3/manage_app
 ### Set api key  
 https://github.com/YamamotoDesu/CoffeeQuest/blob/main/CoffeeQuest/Resources/APIKeys.swift
 
-### Update cocoapods
+### Delete Podfile.lock And Update cocoapods
 ```
 pod deintegrate && pod install
 ```
