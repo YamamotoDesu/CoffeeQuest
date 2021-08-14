@@ -1,7 +1,7 @@
 # CoffeeQuest
 <img src="https://user-images.githubusercontent.com/47273077/129431955-49da704a-e1f8-440a-9442-8422c1fd24a6.png" width="300" height="600">
 
-## Prep  
+## Run app  
 ### 1. Get yelp Api Key
 https://www.yelp.com/developers/v3/manage_app
 
@@ -17,7 +17,5 @@ rm Podfile.lock
 ```
 pod deintegrate && pod install
 ```
-
-### 5. Run app
 
 
