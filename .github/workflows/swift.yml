@@ -1,39 +1,19 @@
-
-name: Swift
-
-on: [push]
-
+on: pull_request
+name: Test
 jobs:
-  build:
-
+  test:
+    name: Test
     runs-on: macOS-latest
-
+    strategy:
+        matrix:
+          destination: ['platform=iOS Simulator,OS=12.2,name=iPhone X', 'platform=tvOS Simulator,OS=12.2,name=Apple TV 4K']
     steps:
-    - uses: actions/checkout@v1
-    # Select Xcode version
-    - name: Select Xcode version
-      run: sudo xcode-select -s '/Applications/Xcode.app/Contents/Developer'
-
-    - name: Show Xcode version
-      run: xcodebuild -version
-    
-    - name: Bundle Install
-      run: bundle install
-    
-    - name: CocoaPods
-      run: bundle exec pod install
-
-      # Run build
-    - name: Build
-      run: xcodebuild
-            -scheme CoffeeQuest
-            -sdk iphonesimulator
-            -configuration Debug
-            build
-      # Run unit test
-    - name: Run tests
-      run: xcodebuild
-            -scheme CoffeeQuest
-            -sdk iphonesimulator
-            -destination 'platform=iOS Simulator,name=iPhone 12 Pro Max'
-            clean test
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Build and test
+        run: |
+          cd Texstyle
+          xcodebuild clean test -project Texstyle.xcodeproj -scheme Texstyle -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+          bash <(curl -s https://codecov.io/bash)
+        env: 
+         destination: ${{ matrix.destination }}
