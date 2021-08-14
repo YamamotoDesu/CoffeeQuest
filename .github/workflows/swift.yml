@@ -1,8 +1,8 @@
 on: pull_request
-name: Test
+name: CoffeeQuest
 jobs:
   test:
-    name: Test
+    name: CoffeeQuest
     runs-on: macOS-latest
     strategy:
         matrix:
@@ -17,3 +17,4 @@ jobs:
           bash <(curl -s https://codecov.io/bash)
         env: 
          destination: ${{ matrix.destination }}
+         
