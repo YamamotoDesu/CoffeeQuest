@@ -17,6 +17,9 @@ jobs:
     - name: Show Xcode version
       run: xcodebuild -version
     
+    - name: Bundle Install
+      run: bundle install
+    
     - name: CocoaPods
       run: bundle exec pod install
 
