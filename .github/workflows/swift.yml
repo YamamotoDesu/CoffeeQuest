@@ -1,20 +1,25 @@
-on: pull_request
-name: CoffeeQuest
-jobs:
-  test:
-    name: CoffeeQuest
-    runs-on: macOS-latest
-    strategy:
-        matrix:
-          destination: ['platform=iOS Simulator,OS=12.2,name=iPhone X', 'platform=tvOS Simulator,OS=12.2,name=Apple TV 4K']
-    steps:
-      - name: Checkout
-        uses: actions/checkout@master
-      - name: Build and test
-        run: |
-          cd Texstyle
-          xcodebuild clean test -project Texstyle.xcodeproj -scheme Texstyle -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
-          bash <(curl -s https://codecov.io/bash)
-        env: 
-         destination: ${{ matrix.destination }}
-         
+# This is a basic workflow to help you get started with Actions
+
+       name: CI
+       on:
+         pull_request:
+            branches: master
+         workflow_dispatch:
+
+       # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+       jobs:
+         # This workflow contains a single job called "build"
+         build:
+           # The type of runner that the job will run on
+           runs-on: macos-latest
+
+           # Steps represent a sequence of tasks that will be executed as part of the job
+           steps:
+             # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+             - uses: actions/checkout@v2
+
+             - run: |
+                 pwd
+                 swift package init --type library
+                 xcodebuild clean
+                 xcodebuild test -workspace TimeFountain.xcworkspace -scheme TimeFountain CODE_SIGN_ENTITLEMENTS= DEVELOPMENT_TEAM= CODE_SIGNING_ALLOWED=NO
