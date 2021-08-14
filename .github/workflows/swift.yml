@@ -22,4 +22,4 @@
                  pwd
                  swift package init --type library
                  xcodebuild clean
-                 xcodebuild test -workspace TimeFountain.xcworkspace -scheme TimeFountain CODE_SIGN_ENTITLEMENTS= DEVELOPMENT_TEAM= CODE_SIGNING_ALLOWED=NO
+                 xcodebuild test -workspace CoffeeQuest.xcworkspace -scheme CoffeeQuest CODE_SIGN_ENTITLEMENTS= DEVELOPMENT_TEAM= CODE_SIGNING_ALLOWED=NO
