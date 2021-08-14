@@ -1,5 +1,5 @@
 # CoffeeQuest
-<img src="https://user-images.githubusercontent.com/47273077/129431955-49da704a-e1f8-440a-9442-8422c1fd24a6.png" width="300" height="600">
+<img src="https://user-images.githubusercontent.com/47273077/129432462-12add16c-d8d3-4210-ae2c-4b095150d56c.png" width="300" height="600">
 
 ## Run app
 ### 1. Refister(※Use Safari) And Get yelp Api Key
