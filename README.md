@@ -70,6 +70,31 @@ extension BusinessMapViewModel: MKAnnotation {
 
 https://github.com/YamamotoDesu/CoffeeQuest/blob/main/CoffeeQuest/Controllers/ViewController.swift  
 ```swift  
+import MapKit
+import YelpAPI
+
+public class ViewController: UIViewController {
+  
+  // MARK: - Properties
+  private var businesses: [YLPBusiness] = []
+  private let client = YLPClient(apiKey: YelpAPIKey)
+  private let locationManager = CLLocationManager()
+  
+  // MARK: - Outlets
+  @IBOutlet public var mapView: MKMapView! {
+    didSet {
+      mapView.showsUserLocation = true
+    }
+  }
+  
+  // MARK: - View Lifecycle
+  public override func viewDidLoad() {
+    super.viewDidLoad()
+    DispatchQueue.main.async { [weak self] in self?.locationManager.requestWhenInUseAuthorization()
+    }
+  }
+}
+
 // MARK: - MKMapViewDelegate
 extension ViewController: MKMapViewDelegate {
   
