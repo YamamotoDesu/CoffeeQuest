@@ -98,6 +98,7 @@ public class AnnotationFactory {
 
 ```  
 
+https://github.com/YamamotoDesu/CoffeeQuest/blob/main/CoffeeQuest/Protocols/BusinessSearchClient.swift
 ```swift  
 public protocol BusinessSearchClient {
   func search(with coordinate: CLLocationCoordinate2D,
@@ -173,8 +174,9 @@ import YelpAPI
 public class ViewController: UIViewController {
   
   // MARK: - Properties
-  private var businesses: [YLPBusiness] = []
-  private let client = YLPClient(apiKey: YelpAPIKey)
+  public let annotationFactory = AnnotationFactory()
+  private var businesses: [Business] = []
+  public var client: BusinessSearchClient = YLPClient(apiKey: YelpAPIKey)
   private let locationManager = CLLocationManager()
   
   // MARK: - Outlets
@@ -187,8 +189,14 @@ public class ViewController: UIViewController {
   // MARK: - View Lifecycle
   public override func viewDidLoad() {
     super.viewDidLoad()
-    DispatchQueue.main.async { [weak self] in self?.locationManager.requestWhenInUseAuthorization()
+    DispatchQueue.main.async { [weak self] in
+      self?.locationManager.requestWhenInUseAuthorization()
     }
+  }
+  
+  // MARK: - Actions
+  @IBAction func businessFilterToggleChanged(_ sender: UISwitch) {
+    
   }
 }
 
@@ -209,39 +217,25 @@ extension ViewController: MKMapViewDelegate {
   }
   
   private func searchForBusinesses() {
-    let coordinate = mapView.userLocation.coordinate
-    guard coordinate.latitude != 0,
-      coordinate.longitude != 0 else {
-        return
-    }
-    
-    let yelpCoordinate = YLPCoordinate(latitude: coordinate.latitude,
-                                       longitude: coordinate.longitude)
-    
-    client.search(with: yelpCoordinate,
+    client.search(with: mapView.userLocation.coordinate,
                   term: "coffee",
                   limit: 35,
                   offset: 0,
-                  sort: .bestMatched) { [weak self] (searchResult, error) in
+                  success: { [weak self] (businesses) in
                     guard let self = self else { return }
-                    guard let searchResult = searchResult,
-                      error == nil else {
-                        print("Search failed: \(String(describing: error))")
-                        return
-                    }
-                    self.businesses = searchResult.businesses
+                    self.businesses = businesses
                     DispatchQueue.main.async {
                       self.addAnnotations()
                     }
-    }
+    }, failure: { error in
+      print("Search failed: \(String(describing: error))")
+    })
   }
   
   private func addAnnotations() {
     for business in businesses {
-      guard let viewModel = annotatinFactory.createBusinessMapView(for: business) else {
-        continue
-      }
-      mapView.addAnnotation(annotation)
+      let viewModel = annotationFactory.createBusinessMapViewModel(for: business)
+      mapView.addAnnotation(viewModel)
     }
   }
   
@@ -257,9 +251,7 @@ extension ViewController: MKMapViewDelegate {
     annotationView.image = viewModel.image
     annotationView.canShowCallout = true
     return annotationView
-    
   }
 }
-
 
 ```  
