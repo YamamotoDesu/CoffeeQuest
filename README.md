@@ -109,6 +109,7 @@ public protocol BusinessSearchClient {
 }
 ```  
 
+https://github.com/YamamotoDesu/CoffeeQuest/blob/main/CoffeeQuest/Models/Business.swift
 ```swift  
 import MapKit
 
