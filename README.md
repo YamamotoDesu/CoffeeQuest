@@ -70,6 +70,7 @@ extension BusinessMapViewModel: MKAnnotation {
 ```  
 
 https://github.com/YamamotoDesu/CoffeeQuest/blob/main/CoffeeQuest/Factory/AnnotationFactory.swift  
+https://github.com/YamamotoDesu/FactoryPattern  
 ```swift  
 import MapKit
 import YelpAPI
