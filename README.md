@@ -27,6 +27,7 @@ latitude: 35.685001
 
 ## Code Example  
 https://github.com/YamamotoDesu/CoffeeQuest/blob/main/CoffeeQuest/ViewModels/BusinessMapViewModel.swift  
+https://github.com/YamamotoDesu/MVVMPattern
 ```swift  
 import UIKit
 import MapKit
