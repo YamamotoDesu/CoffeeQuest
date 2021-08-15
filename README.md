@@ -121,6 +121,7 @@ public struct Business {
 }
 ```  
 
+https://github.com/YamamotoDesu/CoffeeQuest/blob/main/CoffeeQuest/Adapters/YLPClient%2BBusinessSerachClient.swift
 ```swift  
 import MapKit
 import YelpAPI
