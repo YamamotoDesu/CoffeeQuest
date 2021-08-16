@@ -124,7 +124,7 @@ public struct Business {
 }
 ```  
 
-### Adapter  
+### **[Adapter](https://github.com/YamamotoDesu/AdapterPattern)**  
 **[YLPClient+2BBusinessSerachClient](https://github.com/YamamotoDesu/CoffeeQuest/blob/main/CoffeeQuest/Adapters/YLPClient%2BBusinessSerachClient.swift)**    
 ```swift  
 import MapKit
