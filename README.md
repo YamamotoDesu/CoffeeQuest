@@ -99,7 +99,8 @@ public class AnnotationFactory {
 
 ```  
 
-### **[Protocol](https://github.com/YamamotoDesu/CoffeeQuest/blob/main/CoffeeQuest/Protocols/BusinessSearchClient.swift)**  
+### Protocol  
+**[BusinessSearchClient](https://github.com/YamamotoDesu/CoffeeQuest/blob/main/CoffeeQuest/Protocols/BusinessSearchClient.swift)**  
 ```swift  
 public protocol BusinessSearchClient {
   func search(with coordinate: CLLocationCoordinate2D,
@@ -111,7 +112,8 @@ public protocol BusinessSearchClient {
 }
 ```  
 
-### **[Model](https://github.com/YamamotoDesu/CoffeeQuest/blob/main/CoffeeQuest/Models/Business.swift)**  
+### Model  
+**[Business](https://github.com/YamamotoDesu/CoffeeQuest/blob/main/CoffeeQuest/Models/Business.swift)**  
 ```swift  
 import MapKit
 
@@ -122,7 +124,8 @@ public struct Business {
 }
 ```  
 
-### **[Adapter](https://github.com/YamamotoDesu/CoffeeQuest/blob/main/CoffeeQuest/Adapters/YLPClient%2BBusinessSerachClient.swift)**    
+### Adapter  
+**[YLPClient+2BBusinessSerachClient](https://github.com/YamamotoDesu/CoffeeQuest/blob/main/CoffeeQuest/Adapters/YLPClient%2BBusinessSerachClient.swift)**    
 ```swift  
 import MapKit
 import YelpAPI
@@ -168,7 +171,8 @@ extension Array where Element: YLPBusiness {
 
 ```  
 
-### **[Controller](https://github.com/YamamotoDesu/CoffeeQuest/blob/main/CoffeeQuest/Controllers/ViewController.swift)**   
+### Controller  
+**[ViewController](https://github.com/YamamotoDesu/CoffeeQuest/blob/main/CoffeeQuest/Controllers/ViewController.swift)**   
 ```swift  
 import MapKit
 import YelpAPI
