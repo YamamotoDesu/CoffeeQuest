@@ -2,7 +2,7 @@
 <img src="https://user-images.githubusercontent.com/47273077/129432462-12add16c-d8d3-4210-ae2c-4b095150d56c.png" width="300" height="600">
 
 ## Run app
-### 1. Refister(※Use Safari) And Get yelp Api Key
+### 1. Refister(※Use Safari) And Get yelp Api Key  
 https://www.yelp.com/developers/v3/manage_app
 
 ### 2. Set api key  
@@ -26,9 +26,9 @@ longitude: 139.710007
 latitude: 35.685001  
 
 ## Code Example  
-### View Model
+### **[View Model](https://github.com/YamamotoDesu/MVVMPattern)**
 https://github.com/YamamotoDesu/CoffeeQuest/blob/main/CoffeeQuest/ViewModels/BusinessMapViewModel.swift  
-https://github.com/YamamotoDesu/MVVMPattern
+
 ```swift  
 import UIKit
 import MapKit
